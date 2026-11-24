@@ -1,0 +1,4 @@
+interface:
+  display_name: "Revisor QA"
+  short_description: "Revisa robustez y seguridad del backend"
+  default_prompt: "Usa $revisor-qa para revisar este cambio sin modificar archivos."
