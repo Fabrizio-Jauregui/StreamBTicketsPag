@@ -31,4 +31,14 @@ No fuerces un hallazgo para cada pregunta. Si el código tiene un límite efecti
 - Si no encontrás hallazgos, decilo claramente e indicá qué archivos o diff revisaste; no presentes eso como garantía de ausencia de problemas.
 - Si te piden implementar una corrección, explicá que esta Skill solo revisa y entrega hallazgos. No hagas el cambio.
 
-Esta Skill define una instrucción de revisión, no un permiso técnico de solo lectura. Respetá las reglas anteriores y no uses herramientas de escritura durante la revisión.
+## Límite de permisos y uso seguro
+
+Esta Skill define el comportamiento esperado, pero no puede configurar ni imponer por sí misma permisos técnicos de solo lectura. Para que Codex no pueda modificar archivos durante una revisión, el usuario debe iniciar esa sesión con el sandbox en modo `read-only`, por ejemplo:
+
+```powershell
+codex --sandbox read-only --ask-for-approval on-request
+```
+
+En Codex Desktop, puede usarse un perfil personalizado configurado como `read-only` si está disponible. El modo «Pedir aprobación» por sí solo no equivale necesariamente a solo lectura: según la configuración, puede permitir escrituras dentro del proyecto. Si Codex solicita permiso para escribir o ampliar permisos, el usuario debe rechazarlo para mantener la revisión sin cambios.
+
+Si no se puede activar un modo técnico de solo lectura, aclarale al usuario que la instrucción de no editar es una regla de comportamiento y no una garantía técnica. Respetá las reglas anteriores y no uses herramientas de escritura durante la revisión.
